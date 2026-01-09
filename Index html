@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FitMind AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h2>🎙️ FitMind AI</h2>
+
+<button onclick="startListening()">Speak</button>
+<p id="output">Say something...</p>
+
+<script>
+function startListening() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = "en-IN";
+
+  recognition.onresult = function(event) {
+    document.getElementById("output").innerText =
+      event.results[0][0].transcript;
+  };
+
+  recognition.start();
+}
+</script>
+
+</body>
+</html>
